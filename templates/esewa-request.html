@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Donate_Using_esewa_Payment_gateway {% endblock title %}
+{% block style %} 
+#esewa-form
+{
+	background-color:#AED6F1 ;
+	width:600px;
+	height:300px;
+	border:5px aqua solid;
+}
+{% endblock style %}
+{% block content %}
+	<center>
+	<div id="esewa-form" class="mt-4">
+	<h3 class="pt-4">You are donating {{amount}},Continue Clicking Below:</h3><br>
+    <form action="https://uat.esewa.com.np/epay/main" method="POST">
+    <input value="{{amount}}" name="tAmt" type="hidden">
+    <input value="{{amount}}" name="amt" type="hidden">
+    <input value="0" name="txAmt" type="hidden">
+    <input value="0" name="psc" type="hidden">
+    <input value="0" name="pdc" type="hidden">
+    <input value="EPAYTEST" name="scd" type="hidden">
+    <input value="ee2c3ca1-696b-4cc5-a6be-2c40d929d453" name="pid" type="hidden">
+    <input value="http://localhost:8000/esewa_verify" type="hidden" name="su">
+    <input value="http://localhost:8000/esewa_verify" type="hidden" name="fu">
+    <input value="Continue" type="submit">
+    </form>
+</div>
+</center>
+</body>
+{% endblock content %}

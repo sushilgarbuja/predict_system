@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Doctors_details {% endblock title %}
+{% block style %}
+body{
+	background-image:url('{% static 'doctors_bg.jpg' %}')
+}
+{% endblock style %}
+{% block content %}
+{% for doctor in doctors %}
+
+<center>
+<div class="card mb-3 primary mt-3 text-light" style="max-width: 1200px; height: 400px; font-size:16px; background-color:#6fbbd3;background-repeat:repeat;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{doctor.image.url}}" class="card-img" alt='doctors image'>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title">{{doctor.name}}</h5>
+        <p class="card-text">{{doctor.discription}}.</p>
+        <p class="card-text">Qualification: {{doctor.qualification}}.</p>
+	    <p class="card-text">Specialist: {{doctor.specialist}}.</p>
+	    <p class="card-text">Experience: {{doctor.experience}}.</p>
+
+        <p class="card-text"><small class="text-muted"><mark>Phone Number:{{doctor.contact_no}}</mark></small></p>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+{% endfor %}
+{% endblock content %}

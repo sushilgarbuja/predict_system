@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Home {% endblock title %}
+{% block bootstrap %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+
+{% endblock bootstrap %}
+
+{% block style %}
+  h1{
+    padding-top:200px;
+    padding-left:240px;
+    }
+{% endblock style %}
+
+{% block content %}
+ {% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+    <h1 class="display-4 font-weight-bold text-primary">Trustable Disease prediction system <br> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;with high rate of accuracy</h1>
+    <br>
+ {% if user.is_authenticated and doctor.user_type != "doctor" %}
+    <center>
+    <a class="btn btn-outline-primary btn-lg font-weight-bold" href="{% url 'handle_logout'%}" role="button">LogOut</a>
+    </center>
+{% else %}
+<center>
+    <a class="btn btn-outline-primary btn-lg font-weight-bold" href="{% url 'register'%}" role="button">User_Register</a>
+    </center>
+{% if user.is_authenticated and doctor.user_type == "doctor" %}
+ <center>
+    <a class="btn btn-outline-primary btn-lg font-weight-bold mt-4" href="{% url 'handle_logout'%}" role="button">LogOut</a>
+    </center>
+{% elif user.is_authenticated and doctor.user_type == "user" %}
+     <center>
+    <a class="btn btn-outline-primary btn-lg font-weight-bold mt-4" href="{% url 'doctor_login'%}" role="button" margin-bottom: 1.5rem;>Doctor_Login</a>
+    </center>
+{% else %}
+    <center>
+    <a class="btn btn-outline-primary btn-lg font-weight-bold mt-4" href="{% url 'doctor_login'%}" role="button">Doctor_Login</a>
+    </center>
+{% endif %}
+{% endif %}
+{% endblock content %}

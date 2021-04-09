@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Kidney_disease_prediction{% endblock title %}
+{% block style %}
+#form{
+    background-image:url("{% static 'kidney.jpg' %}");
+    background-repeat:no-repeat;
+    margin-top:10px;
+    width:1000px;
+    height:1040px;
+}
+{% endblock style %}
+{% block content %}
+<center>
+<div id="form" class="text-dark font-weight-bold">
+    <form method="get" action="kidney_predict">
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                <label>age</label>
+                 <input type="number" class="form-control col-md-8 mb-4" id="age" name="age" placeholder="age">
+             </div>
+            <div class="form-group col-md-6">
+                <label>Blood Pressure</label>
+                <input type="text" class="form-control col-md-8 mb-4" name="bp" placeholder="Blood Pressure">
+            </div>
+        </div>
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                <label>Specific Gravity</label>
+                <input type="text" class="form-control col-md-8 mb-4" id="sp" name="sg" placeholder="Specific gravity">
+             </div>
+            <div class="form-group col-md-6">
+                <label>Albumin</label>
+                <input type="text" class="form-control col-md-8 mb-4" id="al" name="al" placeholder="Enter Albumin level">
+            </div>
+        </div>
+    <div class="form-row">
+             <div class="form-group col-md-6">
+                <label>Sugar level</label>
+                <input type="text" class="form-control col-md-8 mb-4" id="su" name="su" placeholder="Enter your sugar level">
+             </div>
+       <div class="form-group col-md-6">
+            <label>Red Blood cells, 0:for normal, 1: abnormal </label>
+            <input type="number" name="rbc" class="form-control col-md-8 mb-4" id="rbc" placeholder="Enter 0 for normal rbc lavel,otherwise 1">
+       </div>
+    </div>
+       <div class="form-row">
+             <div class="form-group col-md-6">
+                <label>Pus Cells, 0:normal, 1: abnormal</label>
+                <input type="number" name="pc" class="form-control col-md-8 mb-4" id="pc" placeholder="Enter 0 for normal pc, otherwise enter1">
+             </div>
+          <div class="form-group col-md-6">
+                <label>Blood urea</label>
+                <input type="text" class="form-control col-md-8 mb-4" name="bu" id="bu" placeholder="Enter blood urea level in your body">
+           </div>
+       </div>
+       <div class="form-row">
+             <div class="form-group col-md-6">
+                <label>Serum creatinine</label>
+                 <input type="text" name="sc" class="form-control col-md-8 mb-4" id="sc" placeholder="enter your Serum creatinine">
+             </div>
+           <div class="form-group col-md-6">
+                <label>Sodium level</label>
+                <input type="text" name="sod" class="form-control col-md-8 mb-4" id="sod" placeholder="Enter sodium level">
+           </div>
+       </div>
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                 <label>Hemoglobin level</label>
+                 <input type="text" class="form-control col-md-8 mb-4"  name="hemo" id="hemo" placeholder="Enter your hemoglobin level">
+             </div>
+            <div class="form-group col-md-6">
+            <label>White Blood cells Count</label>
+            <input type="text" class="form-control col-md-8 mb-4"  name="wc" id="wc" placeholder="Enter White blood cells counts">
+            </div>
+        </div>
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                <label>Red blood cells count</label>
+                <input type="text" class="form-control col-md-8 mb-4"  name="rc" id="rc" placeholder="Enter Red blood cells counts">
+             </div>
+           <div class="form-group col-md-6">
+                <label>Hypertension, 1:Yes, 0:No  </label>
+                <input type="text" class="form-control col-md-8 mb-4"  name="htn" id="htn" placeholder="Enter 1 if hepertension is true, o otherwise">
+           </div>
+        </div>
+          <div class="form-row">
+             <div class="form-group col-md-6">
+                <label>Diabetes melitus, 1:yes, 0:No</label>
+                <input type="text" class="form-control col-md-8 mb-4"  name="dm" id="dm" placeholder="Enter 1 if diabetes melitus is true, o otherwise ">
+             </div>
+               <div class="form-group col-md-6">
+                <label>Pedal Edema, 1:yes, 0:No</label>
+                <input type="text" class="form-control col-md-8 mb-4"  name="pe" id="pe" placeholder="Enter 1 if pedal edema is true, o otherwise ">
+             </div>
+          </div>
+      <button type="submit" class="btn btn-primary form-control col-md-2 mb-1">Predict</button>
+    </form>
+    <h2>Result:{{result}}</h2>
+</div>
+    </center>
+{% endblock content %}

@@ -1,0 +1,95 @@
+<!-- Button to open the modal -->
+{% extends 'base.html' %}
+{% block title %}Online_Consultation{% endblock title %}
+{% block style %}
+form .form-control::-webkit-input-placeholder {
+  color: #4CAF50;
+  font-weight:bold;
+}
+
+form .form-control::-moz-placeholder {
+  color: #4CAF50;
+  font-weight:bold;
+}
+form .form-control:-ms-input-placeholder {
+  color: #4CAF50;
+  font-weight:bold;
+}
+form .form-control:placeholder {
+  color: #4CAF50;
+  font-weight:bold;
+}
+#form1{
+  background-color:	#E0FFFF;
+  border:10px #5cb85c solid;
+  width:900px;
+  height:600px;
+  margin:50px;
+  padding:50px;
+
+}
+
+
+{% endblock style %}
+{% block content %}
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+<center>
+<div  id="form1">
+ <form action="handle_consultation">
+<marquee> <h1 class="text-success">Fill Your information for Online consultation</marquee></h1><hr style="height:2px;border-width:0;color:#4CAF50;background-color:#4CAF50">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="patient_name" placeholder="Your Name">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="email" placeholder="Your Email Address">
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="phone" placeholder="Your Phone">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="address" placeholder="Your Address">
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+    <input placeholder="When You are Facing this Problems" class="form-control" name="date" type="text" onfocus="(this.type='date')" id="date">
+  </div>
+    <div class="form-group col-md-6">
+    <input type="number" name="age" class="form-control" placeholder="Your age">
+  </div>
+  </div>
+     <div class="form-row">
+    <div class="form-group col-md-6">
+    <select class="form-control text-success font-weight-bold" name="gender" >
+      <option value="">Your Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+    <div class="form-group col-md-6">
+    <select class="form-control text-success font-weight-bold" name="doctor_name" required>
+      <option value="">Select Your Doctor</option>
+      {% for doctor in doctors %}
+      <option value="{{doctor.name}}">{{doctor.name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  </div>
+   <div class="form-group">
+    <textarea class="form-control" id="textarea1" rows="6" name="message" placeholder="Your Issue or Problems-"></textarea>
+  </div>
+  <input type="submit" name="submit" class="btn-success font-weight-bold">
+</form>
+</div>
+</center>
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Heart_Disease_Prediction {% endblock title %}
+{% block style %}
+#form{
+    background-image:url("{% static 'heart.jpg' %}");
+    background-repeat:no-repeat;
+    margin-top:60px;
+    width:700px;
+    height:945px;
+}
+{% endblock style %}
+{% block content %}
+<center>
+<div id="form" class="text-dark font-weight-bold">
+    <form method="get" action="heart_predict">
+    <label>age</label>
+      <input type="number" class="form-control col-md-4 mb-2" id="age" name="age" placeholder="age">
+
+    <label> Sex, input 1 for male and 0 for female</label>
+      <input type="number" class="form-control col-md-4 mb-2" id="sex" placeholder="Sex" name="sex">
+
+    <label>Chest pain level</label>
+    <input type="number" class="form-control col-md-4 mb-2" name="typical_angina" placeholder="1:typical angina,2:atypical angina,3:non_anginal,4:asymptomatic">
+
+    <label>resting blood pressure</label>
+      <input type="number" class="form-control col-md-4 mb-2" id="trestbps" name="resting_blood_pressure" placeholder="resting blood pressure">
+
+    <label>serum cholestoral in mg/dl</label>
+      <input type="number" class="form-control col-md-4 mb-2" id="chol" name="cholestoral" placeholder="cholestoral level">
+
+    <label>(fasting blood sugar > 120 mg/dl) (1 = true; 0 = false):</label>
+      <input type="number" class="form-control col-md-4 mb-2" id="fbs" name="fasting_blood_sugar" placeholder="fbs>120 or not">
+
+    <label>restecg-resting electrocardiographic results</label>
+      <input type="number" name="electrocardiographic_results" class="form-control col-md-4 mb-2" id="restecg " placeholder="resting electrocardiac results">
+
+    <label>maximum heart rate achieved</label>
+      <input type="number" name="heart_rate_maximum" class="form-control col-md-4 mb-2" id="thalach" placeholder="maximum heart rate achieved>120 or not">
+
+    <label>exercise induced angina (1 = yes; 0 = no)</label>
+      <input type="number" class="form-control col-md-4 mb-2" name="induced_angina" id="exang">
+
+    <label>the slope of the peak exercise ST segment</label>
+      <input type="number" name="st_segment" class="form-control col-md-4 mb-2" id="slope">
+
+    <label>number of major vessels (0-3) colored by flourosopy</label>
+      <input type="number" name="major_vessels" class="form-control col-md-4 mb-2" id="ca">
+
+    <label>thal - 3 = normal; 6 = fixed defect; 7 = reversable defect</label>
+      <input type="number" class="form-control col-md-4 mb-2"  name="thal" id="thal">
+
+      <button type="submit" class="btn btn-primary form-control col-md-2 mb-1">Predict</button>
+    </form>
+    <h2>Result:{{result}}</h2>
+</div>
+    </center>
+
+{% endblock content %}

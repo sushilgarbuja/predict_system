@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Search_Result{% endblock %}
+{% block content %}
+{% if search_result|length < 1 %}
+<center>
+<h2 class="mt-3"><p>No search result found</p></h2>
+</center>
+{% else %}
+{% for result in search_result %}<center>
+<div class="card text-light mt-3" style="width:1300px; background-color: #079BF5">
+  <div class="card-body">
+    <h5 class="card-title">Your Search Result</h5>
+    <p class="card-text">{{result.name}}</p>
+    	<p class="card-text"><b>Doctors_Qualification:</b>{{result.qualification}}</p>
+    	<p class="card-text">{{result.discription}}</p>
+    	<p class="card-text"><b> Preventive Measures: </b>{{result.preventive_measures}}</p>
+    	<p class="card-text"><b> Symptoms Of Disease: </b>{{result.symptoms}}</p>
+    	<p class="card-text">{{result.causes}}</p>
+  </div>
+</div>
+</center>
+{% endfor %}
+
+{% endif %}
+{% endblock content %}

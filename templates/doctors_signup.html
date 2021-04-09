@@ -1,0 +1,96 @@
+
+<!-- Button to open the modal -->
+{% extends 'base.html' %}
+{% block title %}Online_Consultation{% endblock title %}
+{% block style %}
+form .form-control::-webkit-input-placeholder {
+  color: #4CAF50;
+  font-weight:bold;
+}
+
+form .form-control::-moz-placeholder {
+  color: #4CAF50;
+  font-weight:bold;
+}
+form .form-control:-ms-input-placeholder {
+  color: #4CAF50;
+  font-weight:bold;
+}
+form .form-control:placeholder {
+  color: #4CAF50;
+  font-weight:bold;
+}
+#form2{
+  background-color:	#E0FFFF;
+  border:10px #5cb85c solid;
+  width:900px;
+  height:600px;
+  margin:50px;
+  padding:50px;
+
+}
+
+
+{% endblock style %}
+{% block content %}
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+<center>
+<div  id="form2" >
+ <form action="handle_doctor_signup" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<marquee> <h1 class="text-success">Fill Your information</marquee></h1><hr style="height:2px;border-width:0;color:#4CAF50;background-color:#4CAF50">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="name" placeholder="Your Name">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="qualification" placeholder="Your Qualification">
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="specialist" placeholder="Specilist">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="treatable_disease" placeholder="Some Treatable diseases">
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+    <input type="text" class="form-control text-success" name="username" placeholder="Username for this site">
+  </div>
+    <div class="form-group col-md-6">
+    <input type="number" name="contactno" class="form-control text-success " placeholder="Your Phone Number">
+  </div>
+  </div>
+     <div class="form-row">
+    <div class="form-group col-md-6 ">
+      <input type="file" name="image" class="form-control text-success font-weight-bold" placeholder="Your image">
+  </div>
+    <div class="form-group col-md-6">
+    <input type="text" name="address" class="form-control" placeholder="Your address">
+  </div>
+  </div>
+     <div class="form-row">
+   <div class="form-group col-md-6">
+    <input type="email" class="form-control" name="email" placeholder="Your Email">
+  </div>
+         <div class="form-group col-md-6">
+             <input type="password" name="password" class="form-control" placeholder="Your password">
+         </div>
+     </div>
+   <div class="form-group">
+    <textarea class="form-control" id="textarea1" rows="6" name="description" placeholder="About Yourself"></textarea>
+  </div>
+  <input type="submit" name="submit" class="btn-success font-weight-bold">
+</form>
+</div>
+</center>
+{% endblock content %}

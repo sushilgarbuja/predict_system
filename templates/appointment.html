@@ -1,0 +1,87 @@
+<!-- Button to open the modal -->
+{% extends 'base.html' %}
+{% block title %}Make_An_Appintment{% endblock title %}
+{% block style %}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:#f0ad4e;
+  opacity: 3; /* Firefox */
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #f0ad4e;
+
+}
+#form{
+  background-color:#0275d8;
+  border:10px #f0ad4e solid;
+  width:900px;
+  height:600px;
+  margin:50px;
+  padding:50px;
+
+}
+
+{% endblock style %}
+{% block content %}
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+<center>
+<div  id="form">
+ <form action="handle_appointment">
+<marquee> <h1 class="text-warning">Fill Your Information Here for Appointment</marquee></h1>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="patient_name" placeholder="Your Name">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="email" placeholder="Your Email Address">
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="phone" placeholder="Your Phone">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" name="address" placeholder="Your Address">
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+    <input type="date" class="form-control" name="date" placeholder="Your date for appointment">
+  </div>
+    <div class="form-group col-md-6">
+    <select class="custom-select"  name="time" placeholder="Your appointment time" required>
+      <option value="from 10am to 12 pm">from 10am to 12pm</option>
+      <option value="from 12 pm to 2pm">from 12pm to 2pm</option>
+      <option value="from 2pm to 4pm">from 2pm to 4pm</option>
+      <option value="from 4 pm to 6 pm">from 4pm to 6pm</option>
+    </select>
+  </div>
+  </div>
+     <div class="form-row">
+    <div class="form-group col-md-6">
+    <select class="custom-select" name="gender" placeholder="Your Gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+    <div class="form-group col-md-6">
+    <select class="custom-select" name="doctor_name" placeholder="Your appointment time" required>
+      {% for doctor in doctors %}
+      <option value="{{doctor.name}}">{{doctor.name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  </div>
+   <div class="form-group">
+    <textarea class="form-control" id="textarea1" rows="6" name="message" placeholder="Your message"></textarea>
+  </div>
+  <input type="submit" name="submit" class="btn-warning font-weight-bold">
+</form>
+</center>
+{% endblock content %}

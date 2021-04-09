@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Diabetes_prediction {% endblock title %}
+{% block style %}
+#form{
+    background-image:url("{% static 'form.jpg' %}");
+    background-repeat:no-repeat;
+    margin-top:60px;
+    width:700px;
+    height:700px;
+}
+{% endblock style %}
+{% block content %}
+<center>
+<div id="form" class="text-dark font-weight-bold">
+    <form action="predict_diabetes" method="get">
+        Pregnancies:<input type="number" class="form-control col-md-2 mb-1" name="pregnencies" size="30">
+        Glucose:<input type="number" class="form-control col-md-2 mb-1" name="glucose" size="30">
+        Blood pressure:<input type="number" class="form-control col-md-2 mb-1" name="blood_pressure" size="30">
+        skin Thickness:<input type="number" class="form-control col-md-2 mb-1" name="skin_thickness" size="30">
+        Insulin:<input type="number" class="form-control col-md-2 mb-1" name="insulin" size="30">
+        BMI :<input type="number"  class="form-control col-md-2 mb-1" name="bmi" size="30">
+        Diabetes Predigree function:<input type="text" class="form-control col-md-2 mb-1" name="diabetes_predegree_function" size="30">
+        Age:<input type="number" class="form-control col-md-2 mb-1" name="age" size="30">
+        <input type="submit" value="submit" class="form-control col-md-2 mb-1 btn-primary" name="submit">
+        Result: {{result}}<br><br>
+        Acuuracy Percentage: {{Accuracy}}<br>
+    </form>
+</div>
+    </center>
+{% endblock content %}
