@@ -92,7 +92,7 @@ def heart_disease_inputs(request):
     return render(request,'heart_disease_form.html')
 def heart_predict(request):
     # loading dataset for heart disease predictions
-    heart_data=pd.read_csv(r"E:\heart_disease_prediction\heart.csv")
+    heart_data=pd.read_csv(r"C:\Users\Sushil\Desktop\predict_system\index\heart_disease.csv")
     heart_data=heart_data.drop("oldpeak",axis=1)
     #train test splitchronic
     X=heart_data.drop('target',axis=1)
@@ -127,10 +127,10 @@ def handle_logout(request):
     return redirect('index')
 @login_required(login_url='register')
 def diabetes(request):
-    return render(request,'diabetes.html')
+    return render(request,'/diabetes.html')
 def predict_diabetes(request):
     # loading dataset
-    diabetis_data = pd.read_csv(r'E:\disease predictiion\diabetes.csv')
+    diabetis_data = pd.read_csv(r'diabetes.csv')
     # train test split
     X = diabetis_data.drop("Outcome", axis=1)
     Y = diabetis_data['Outcome']
@@ -159,7 +159,7 @@ def kidney_disease(request):
     return render(request,'chronic.html')
 def kidney_predict(request):
     #reading dataset using pandas
-    chronic_data = pd.read_csv(r'E:\disease predictiion\kidney_disease.csv')
+    chronic_data = pd.read_csv(r'C:\Users\Sushil\Desktop\predict_system\index\kidney_disease.csv')
 
     #data cleaning using pandas
     #droping less correlated values
@@ -214,7 +214,7 @@ def symptoms_disease(request):
 #defining views to handle prediction from symptoms
 def predict_using_symptoms(request):
   #readig dataset using pandas
-  df=pd.read_csv(r'E:\disease predictiion\Training.csv')
+  df=pd.read_csv(r'C:\Users\Sushil\Desktop\predict_system\index\training.csv')
   df.replace({'prognosis':{'Fungal infection':0,'Allergy':1,'GERD':2,'Chronic cholestasis':3,'Drug Reaction':4,
   'Peptic ulcer diseae':5,'AIDS':6,'Diabetes ':7,'Gastroenteritis':8,'Bronchial Asthma':9,'Hypertension ':10,
   'Migraine':11,'Cervical spondylosis':12,
